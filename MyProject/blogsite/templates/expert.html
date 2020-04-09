@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="expert-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="expert-details-left">
+                    <div class="expert-details-wrapper">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="expert-img">
+                                    <img src="{{ expert.image.url }}" alt="expert-img" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="expert-content">
+                                    <ul class="list-unstyled">
+                                        <li><strong>Name-</strong> {{expert.name}}</li>
+                                        <li><strong>City-</strong> {{expert.city}}</li>
+                                        <li><strong>Education-</strong> {{expert.education}} </li>
+                                        <li><strong>Areas of expertise-</strong> {{expert.expertise}}</li>
+                                        <li><strong>Work Experience-</strong> {% autoescape off %}{{expert.experience}} {% endautoescape off %} Years</li>
+                                        <li><strong>Website-</strong> </li>
+                                        <li><strong>Contact Information-</strong>  </li>
+                                    </ul>
+                                    <p>{% autoescape off %}{{expert.contact_info}}{% endautoescape off %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="articals-written-wrap">
+                        <h2>Articles Written By {{expert.name}}</h2>
+                        <ul class="list-unstyled"> 
+                            
+                            {% for post_exp in post_exp %}
+                            <li>
+                                <div class="artcl-img">
+                                <a href="{% url 'posts_detail' post_exp.id %}"><img src="{{ post_exp.image.url }}" alt="" class="img-responsive"></a>
+                                </div>
+                                <div class="artcle-right">
+                                    <h3>{{post_exp.title}}</h3>
+                                    <span class="date-wrp">{{post_exp.creation_date | date:"d F Y"}}</span>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="load-more">
+                            {% if post_exp.has_next %}
+                            <a  href="?page={{ post_exp.next_page_number }}" class="btn">Load Next</a>
+                            {% elif post_exp.has_previous %}
+                            <a href="?page={{ post_exp.previous_page_number }}" class="btn">previous</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="expert-sidebar">
+                    <div class="exprt-workshop">
+                        <h4>Workshops</h4>
+                        <div class="expert-body">
+                            <div class="expert-sidelist">
+                                <a href="#">
+                                    <h5>Mental wellness and yoga workshop for beginners</h5>
+                                    <p>Learn the art of mindfulness in this 2 week course</p>
+                                    <div class="workshp-plce">
+                                        <p>Conducted in Mumbai</p>
+                                        <span>July 9, 2018</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="expert-sidelist">
+                                <a href="#">
+                                    <h5>Mental wellness and yoga workshop for beginners</h5>
+                                    <p>Learn the art of mindfulness in this 2 week course</p>
+                                    <div class="workshp-plce">
+                                        <p>Conducted in Mumbai</p>
+                                        <span>July 9, 2018</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="expert-sidelist">
+                                <a href="#">
+                                    <h5>Mental wellness and yoga workshop for beginners</h5>
+                                    <p>Learn the art of mindfulness in this 2 week course</p>
+                                    <div class="workshp-plce">
+                                        <p>Conducted in Mumbai</p>
+                                        <span>July 9, 2018</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="expert-video-wrap">
+                        {% for YouTubeLink in YouTubeLink %}
+                        <iframe width="100%" height="200" src="{{YouTubeLink.YoutubeLink}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        {% endfor %}
+                    </div>
+                    <div class="other-expert-wrap">
+                        <h3>Other experts </h3>
+                        <ul>
+                            {% for expert_all in expert_all %}
+                           <li><a href="{% url 'expert' expert_all.id %}">{{expert_all.name}}</a></li> 
+                           {% endfor%}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>
+<!-- 
+<section class="related-post">
+    <div class="container">
+        <h2>Related Post</h2>
+        <div class="owl-carousel related-post-cra">
+            {% for slider in slider %}
+            <div class="item">
+                <div class="reltd-post-colmn">
+                    <div class="reld-img">
+                        <a href="{% url 'posts_detail' slider.id %}"><img src="{{ slider.image.url }}" alt="" class="img-responsive"></a>
+                    </div>
+                    <div class="relted-post-cnt">
+                        <span class="category">{{slider.category}}</span>
+                        <h4>{% autoescape off %}{{slider.content| truncatewords:9}}{% endautoescape off %}</h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+-->
+
+<section class="slider-content centred slider-tp-wrapper">
+    <div class="container"> 
+        <h2>Related Post</h2>
+        <div class="four-column-carousel owl-dots-none owl-nav">
+            {% for slider in slider %} 
+            <div class="carousel-style-one">
+                <div class="img-box"><a href="{% url 'posts_detail' slider.id %}"><figure><img src="{{ slider.image.url }}" alt=""></figure></a></div>
+                <div class="lower-content">
+                    <div class="meta-text"><a href="{% url 'posts_detail' slider.id %}">{{ slider.category }}</a></div>
+                    <div class="title"><h6><a href="{% url 'posts_detail' slider.id %}">{% autoescape off %}{{ slider.content | truncatewords:15 }}{% endautoescape off %}</a></h6></div>
+                </div>
+            </div>
+            {% endfor %} 
+        </div>
+    </div>
+</section>
+{% endblock %}

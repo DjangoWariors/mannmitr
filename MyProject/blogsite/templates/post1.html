@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<section class="article-temp-blg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="article-page-temp">
+                    <div class="atrcle-top-bar">
+                        <h1 class="heading-2">{{ post_data.title}}</h1>
+                        <div class="aticle-meta-desc-top">
+                            <div class="article-tp-cate">
+                                <ul class="list-inline mb-0"> 
+                                    <li>
+                                        <a href="javascript:void(0)">{{post_data.category}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">{{post_data.Subcategory}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="share-scl-media">
+                                <ul class="social-style-one" >
+                                    <li class="share-head "><i class="fa fa-share-alt" aria-hidden="true" ></i> <strong class="text-uppercase">SHARE</strong></li>
+                                    <li><a href="#"onClick="MyWindow=window.open('https://wa.me/?text={{ request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/whatapp.png'  %}" alt="whatapp"></a></li>
+                                    <li><a href="#"onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/fb.png' %}" alt="fb"></a></li>
+                                    <li><a href="#" onClick="MyWindow=window.open('https://www.linkedin.com/sharing/share-offsite/?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/linkden.png' %}" alt="linkden"></a></li>
+                                    <li><a href="#"onClick="MyWindow=window.open('https://twitter.com/share?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/twitter.png' %}" alt="twitter"></a></li>
+                                    
+                                </ul> 
+                            </div>
+                            <div class="artcle-date">
+                                <span>{{ post_data.creation_date | date:"d F Y"}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="artilce-descrption-wrap">
+                        <div class="atrcle-desc-paul">
+                            {% autoescape off %}{{ post_data.content }}{% endautoescape %}
+                        </div>
+                        <div class="social-media-cl-share">
+                            <ul class="social-style-one">
+                                <li class="share-head "><i class="fa fa-share-alt" aria-hidden="true" ></i> <strong class="text-uppercase">SHARE</strong></li>
+                                <li><a href="#"onClick="MyWindow=window.open('https://wa.me/?text={{ request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/whatapp.png'  %}" alt="whatapp"></a></li>
+                                <li><a href="#"onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/fb.png' %}" alt="fb"></a></li>
+                                <li><a href="#" onClick="MyWindow=window.open('https://www.linkedin.com/sharing/share-offsite/?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/linkden.png' %}" alt="linkden"></a></li>
+                                <li><a href="#"onClick="MyWindow=window.open('https://twitter.com/share?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/twitter.png' %}" alt="twitter"></a></li>
+                            </ul>  
+                        </div>
+                    </div>
+                    <div class="expert-artilce-wrap">
+                        <div class="expert-atcle-top-bar">
+                            <div class="expert-imgpost-cntrbute">
+                                <img src="{{ expert.image.url }}" alt="expert-imgpost" class="img-responsive">
+                            </div>
+                            <div class="expert-descpt-details">
+                                <h3>Expert who contributed to the article </h3>
+                                <ul class="list-unstyled mb-0">
+                                    <li>
+                                        <strong>Name:</strong>
+                                        <span><a href="{% url 'expert' expert.id %}">{{expert.name}}</a></span>
+                                    </li>
+                                    <li>
+                                        <strong>Education:</strong>
+                                        <span>{{expert.education}}</span>
+                                    </li>
+                                    <li>
+                                        <strong>Work profile:</strong>
+                                        <span>{{expert.expertise}}</span>
+                                    </li>
+                                    <li>
+                                        <strong>Contact information:</strong>
+                                        <span>{% autoescape off %}{{expert.contact_info}} {% endautoescape %}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="volunteer-wrap-cl">
+                            <p><strong>Volunteer who contributed to the article</strong></p>
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <strong>Name:</strong>
+                                    <span></span>
+                                </li>
+                                <li>
+                                    <strong>Contribution details:</strong>
+                                    <span></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="sidebar-content">
+                    <div class="recent-post-wrapper">
+                        <div class="recent-top-img text-center">
+                            <h3 class="text-left">Top posts</h3>
+                        </div>
+                        <div class="recent-post-list-wrap">
+                            {% for query in slider|slice:":6" %}
+                                <div class="single-post">
+                                    <div class="img-box">
+                                        <a href="{% url 'posts_detail' query.id %}">
+                                            <img src="{{ query.image.url }}"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="recent-post-nct">
+                                        <h6><a href="{% url 'posts_detail' query.id %}">{{ query.Subcategory }}</a></h6>
+                                        <div class="text">{{ query.creation_date }}</div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="sidebar-newsletter centred">
+                        <div class="newsletter-top-bar">
+                            <div class="title"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;NEWSLETTER</div>
+                            <div class="text">These days are all share them wit me</div>
+                        </div>
+                        <div class="news-letter-form">
+                            <form  action="{%url 'index'%}" method="post" onSubmit="return confirm('Do you want to submit your Email ?') " >
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Your Email Address" required="">
+                                    <button type="submit" class="btn-one">SUBSCRIBE</button>
+                                </div>
+                            </form>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>     
+
+<section class="slider-content centred related-post-wrap-cl">
+    <div class="container"> 
+        <h3>Related Posts</h3>
+        <div class="four-column-carousel owl-dots-none owl-nav">
+            {% for slider in slider|slice:":5" %}
+            <div class="carousel-style-one">
+                <div class="img-box"><a href="{% url 'posts_detail' slider.id %}"><figure><img src="{{ slider.image.url }}" alt=""></figure></a></div>
+                <div class="lower-content">
+                    <div class="meta-text"><a href="{% url 'posts_detail' slider.id %}">{{slider.category }}</a></div>
+                    <div class="title"><h6><a href="{% url 'posts_detail' slider.id %}">{% autoescape off %}{{ slider.content | truncatewords:20 }}{% endautoescape off %}</a></h6></div>
+                </div>
+            </div>
+            {% endfor %} 
+        </div>
+    </div>
+</section>
+   
+
+    {% endblock %}

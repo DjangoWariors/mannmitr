@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="slider-content centred slider-tp-wrapper slider-tp-wrapper-abt center-block" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 content-side">
+        <div class="title"><h4><div class="text-left">About us</div></h4></div>
+        {% for about in about %}
+        <div class="text">
+          <p class="text-justify">{% autoescape off %}{{about.content}}{% endautoescape %}</p> 
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slider-content centred slider-tp-wrapper slider-tp-wrapper-abt center-block" >
+  <div class="container">
+    <h4><div class="text-left">The Founders</div></h4>
+    <div class="row">
+      {%for founders in founders%}
+      <div class="col-md-6 content-side">
+        <div class="thumbnail">
+          <div class="abt-img">
+            <img src="{{founders.image.url}}" style="width:100%">
+          </div>
+          <div class="card-body text-left">
+            <h3 class="card-title mb-20"><b>{{founders.name}}</b></h3>
+            <div class="text">
+              <p class="text-justify">{% autoescape off %}{{founders.content}}{% endautoescape %}</p>
+            </div>
+          </div>
+        </div>  
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 col-xs-12 content-side">
+                <div class="header-top" style="background :#ffffff !important;">
+                    <div class="container">
+                        <ul class="social-style-one" >
+                            <div class="page-header" style="border-bottom: 0px solid #eee;">
+                                <div class="title"><h3><b>{{ post_data}}</b></h3></div>
+                            </div>
+                            <li ><i class="fa fa-share-alt" aria-hidden="true" ></i> &nbsp;Share</li>
+                            <li><a href="#"onClick="MyWindow=window.open('https://wa.me/?text={{ request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><i class="fa fa-whatsapp " ></i></a></li>
+                            <li><a href="#"onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><i class="fa fa-facebook" ></i></a></li>
+                            <li><a href="#" onClick="MyWindow=window.open('https://www.linkedin.com/sharing/share-offsite/?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"onClick="MyWindow=window.open('https://twitter.com/share?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><i class="fa fa-twitter " ></i></a></li>
+                            <div class="page-header" style="border-bottom: 0px solid #eee;">
+                                <div class="date"><span></span> {{ post_data.creation_date | date:"d F Y"}} &nbsp;&nbsp;/{{post_data.category}}/{{post_data.Subcategory|upper}}
+                            </div> 
+                        </ul>  
+                    </div>
+                </div>                
+            </div>            
+        </div>
+    </div>
+</section>     
+
+
+
+<section>
+    <div class="container">
+        <div class="row">
+                <div class="col-md-9 col-sm-12 col-xs-12 content-side">
+                    <div class="header-top" style="background :#ffffff !important;">
+                        <div class="container">
+                            <ul class="social-style-one">
+                                    <div class="title"><b>{% autoescape off %}{{ post_data.content }}{% endautoescape %}</b></div>
+                                    <ul class="social-style-one" style="margin-top: 10px;" >
+                                        <li ><i class="fa fa-share-alt" aria-hidden="true" ></i> &nbsp;Share</li>
+                                        <li><a href="#"onClick="MyWindow=window.open('https://wa.me/?text={{ request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><i class="fa fa-whatsapp " ></i></a></li>
+                                        <li><a href="#"onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><i class="fa fa-facebook" ></i></a></li>
+                                        <li><a href="#" onClick="MyWindow=window.open('https://www.linkedin.com/sharing/share-offsite/?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"onClick="MyWindow=window.open('https://twitter.com/share?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><i class="fa fa-twitter " ></i></a></li>
+                                    </ul>  
+                                    <hr>
+                                    <div class="social-style-one">
+                                        <div class="row">
+                                            <div class="authore-title">
+                                                <h3>Expert who contributed to the article </h3> <span></span>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12 col-xs-12 content-side">
+                                                <div class="expert-imgpost">
+                                                    <img src="{{ expert.image.url }}" alt="expert-imgpost" class="img-responsive">
+                                                </div>
+                                            </div>   
+                                            <div class="col-md-6 col-sm-12 col-xs-12 content-side">
+                                                <div class="single-authore" style="padding: 0px 0px 0px 1px!important;">
+                                                    <div class="authore-title"><p><b>Name:</b> <a href="{% url 'experthn' expert.id %}">{{expert.name}}</p></a></div>
+                                                    <div class="authore-title"><p><b>Education:</b> {{expert.education}}</p></div>
+                                                    <div class="authore-title"><p><b>Work profile:</b> {{expert.expertise}}</p></div>
+                                                    <div class="authore-title"><p><b>Contact information:</b> {% autoescape off %}{{expert.contact_info}} {% endautoescape %}</p></div>    
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <hr>
+                            </ul>  
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12 sidebar-side" style="padding-top: 10px!important;">
+                    <div class="sidebar-content">
+                        <div class="recent-post-wrapper">
+                            <div class="recent-top-img text-center">
+                                <h3 class="text-left">Top posts</h3>
+                            </div>
+                            <div class="recent-post-list-wrap">
+                                {% for query in slider|slice:":6" %}
+                                    <div class="single-post">
+                                        <div class="img-box">
+                                            <a href="{% url 'posts_hindi' query.id %}">
+                                                <img src="{{ query.image.url }}"alt="">
+                                            </a>
+                                        </div>
+                                        <div class="recent-post-nct">
+                                            <h6><a href="{% url 'posts_hindi' query.id %}">{{ query.Subcategory }}</a></h6>
+                                            <div class="text">{{ query.creation_date }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="sidebar-newsletter centred">
+                            <div class="title"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;NEWSLETTER</div>
+                            <div class="text">These days are all share them wit me</div>
+                            <form action="#" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Your Email Address" required="">
+                                    <button type="submit" class="btn-one">SUBSCRIBE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>    
+        </div>
+    </div>
+</section>
+
+    <!-- blog side end -->
+    <section class="slider-content centred sp-one">
+        <div class="container"> 
+            <div class="four-column-carousel owl-dots-none owl-nav">
+                {% for slider in slider|slice:":5" %}
+                <div class="carousel-style-one">
+                    <div class="img-box"><a href="{% url 'posts_hindi' slider.id %}"><figure><img src="{{ slider.image.url }}" alt=""></figure></a></div>
+                    <div class="lower-content">
+                        <div class="meta-text"><a href="{% url 'posts_hindi' slider.id %}">{{slider.category }}</a></div>
+                        <div class="title"><h6><a href="{% url 'posts_hindi' slider.id %}">{% autoescape off %}{{ slider.content | truncatewords:20 }}{% endautoescape off %}</a></h6></div>
+                    </div>
+                </div>
+                {% endfor %} 
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}

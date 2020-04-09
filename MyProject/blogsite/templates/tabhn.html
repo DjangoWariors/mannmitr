@@ -1,0 +1,218 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- slider content -->
+    <section class="slider-content centred slider-tp-wrapper">
+        <div class="container"> 
+            <div class="four-column-carousel owl-dots-none owl-nav">
+            {% if up_slider %}
+                {% for Slider_Disorder in up_slider|slice:":5" %}
+                <div class="carousel-style-one">  
+                    <div class="img-box"><a href="{% url 'posts_hindi' Slider_Disorder.id %}"><figure><img src="{{ Slider_Disorder.image.url }}" alt=""></figure></a></div>
+                    <div class="lower-content">
+                        <div class="meta-text"><a href="{% url 'posts_hindi' Slider_Disorder.id %}">{{ Slider_Disorder.category }}</a></div>
+                        
+                        <div class="title"><h6><a href="{% url 'posts_hindi' Slider_Disorder.id %}">{% autoescape off %}{{ Slider_Disorder.content | truncatewords:15 }}{% endautoescape %}</a></h6></div>
+                    </div> 
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>data not available</p>
+            {% endif %}
+            </div> 
+        </div>
+    </section> 
+    <!-- slider content -->
+
+
+    <!-- blog side -->
+    <section class="blog-side blog-style-one sec-pad">
+        <div class="container">
+            <div class="text-left">
+                <h2 class="heading-2">Essential reads</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-9 col-sm-12 col-xs-12 content-side">
+                    <div class="blog-details-content tab-page-temp-wrap">
+                        <div class="row">
+                            {% for up_slider in up_slider|slice:"3:9" %} 
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                
+                                <div class="content-box overlay-item">
+                                    <div class="inner-box">
+                                        <div class="image-box">
+                                            <figure class="image"><img src="{{ up_slider.image.url }}" alt=""></figure>
+                                            <div class="overlay-box">
+                                                <div class="overlay-inner">
+                                                    <div class="content text-center">
+                                                        <a href="#social-share-tp-{{forloop.counter}}" data-toggle="collapse" class="btn-pl">
+                                                            <i class="fa fa-share-alt"></i></a>
+                                                            <div class="collapse" id="social-share-tp-{{forloop.counter}}">
+                                                                <ul class="social-top list-inline social-sharing-icns">
+                                                                    <li><a href="#"onClick="MyWindow=window.open('https://wa.me/?text={{ request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;">
+                                                                        <img src="{% static 'images/social/whatapp.png'  %}" alt="whatapp">
+                                                                    </a></li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'images/social/insta.png' %}" alt="insta">
+                                                                        </a>
+                                                                    </li>
+                                                                    <li><a href="#"onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;">
+                                                                        <img src="{% static 'images/social/fb.png' %}" alt="fb">
+                                                                    </a></li>
+                                                                    <li><a href="#" onClick="MyWindow=window.open('https://www.linkedin.com/sharing/share-offsite/?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;">
+                                                                        <img src="{% static 'images/social/linkden.png' %}" alt="linkden">   
+                                                                    </a></li>
+                                                                    <li><a href="#"onClick="MyWindow=window.open('https://twitter.com/share?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;">
+                                                                        <img src="{% static 'images/social/twitter.png' %}" alt="twitter">  
+                                                                    </a></li>
+                                                                </ul>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blog-content-one blog-content-two sp-three">
+                                        <div class="top-content centred">
+                                            <div class="meta-text"><a href="{% url 'posts_hindi' up_slider.id %}">{{ up_slider.category | truncatewords:20 }}</a></div>
+                                            <div class="title"><h4><a href="{% url 'posts_hindi' up_slider.id %}">{{ up_slider.title }}</a></h4></div>
+                                            <div class="date"><span>On</span> {{ up_slider.creation_date }} &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By </span> {{ up_slider.expert }}</div>
+                                        </div>
+                                        <div class="text">
+                                            <p>{% autoescape off %}{{up_slider.content | truncatewords:30 }}{% endautoescape off %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}  
+                        </div>	 		
+                    </div>
+                </div>
+                <!-- side bar-->
+                <div class="col-md-3 col-sm-12 col-xs-12 sidebar-side">
+                    <div class="sidebar-content">
+                        
+                        <div class="recent-post-wrapper">
+                            <div class="recent-top-img text-center">
+                                <div class="text-left">
+                                    <h4>Related reads</h4>
+                                </div>
+                            </div>
+                            <div class="recent-post-list-wrap">
+                                {% for up_slider in up_slider|slice:":5" %}
+                                <div class="single-post">
+                                    <div class="img-box">
+                                        <a href="{% url 'posts_hindi' up_slider.id %}">
+                                            <img src="{{ up_slider.image.url }}"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="recent-post-nct">
+                                        <h6><a href="{% url 'posts_hindi' up_slider.id %}">{{ up_slider.Subcategory }}</a></h6>
+                                        <div class="text">{{ up_slider.creation_date }}</div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                       
+                        <!-- Video here -->
+                        <div class="video-sidebar-wrap">
+                            <iframe width="100% " height="400" src="https://www.youtube.com/embed/VwBGvYpFStE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <!-- newsletter here -->
+                        <div class="sidebar-newsletter centred">
+                            <div class="newsletter-top-bar">
+                                <div class="title"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;NEWSLETTER</div>
+                                <div class="text">These days are all share them wit me</div>
+                            </div>
+                            <div class="news-letter-form">
+                                <form  action="{%url 'index'%}" method="post" onSubmit="return confirm('Do you want to submit your Email ?') " >
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="email" name="email" placeholder="Your Email Address" required="">
+                                        <button type="submit" class="btn-one">SUBSCRIBE</button>
+                                    </div>
+                                </form>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- blog side end -->
+        
+    <!--last image boxes-->
+    <section class="blog-side blog-style-one sec-pad">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 content-side">
+                    <div class="blog-details-content">
+                        <div class="row">
+                            {% for up_slider in up_slider|slice:":3"%} 
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                
+                                <div class="content-box overlay-item">
+                                    <div class="inner-box">
+                                        <div class="image-box">
+                                            <figure class="image"><img src="{{ up_slider.image.url }}" alt=""></figure>
+                                            <div class="overlay-box">
+                                                <div class="overlay-inner">
+                                                    <div class="content text-center">
+                                                        <a href="#social-share-tp-{{forloop.counter}}" data-toggle="collapse" class="btn-pl">
+                                                            <i class="fa fa-share-alt"></i></a>
+                                                            <div class="collapse" id="social-share-tp-{{forloop.counter}}">
+                                                                <ul class="social-top list-inline social-sharing-icns">
+                                                                    <li><a href="#"onClick="MyWindow=window.open('https://wa.me/?text={{ request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;">
+                                                                        <img src="{% static 'images/social/whatapp.png'  %}" alt="whatapp">
+                                                                    </a></li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <img src="{% static 'images/social/insta.png' %}" alt="insta">
+                                                                        </a>
+                                                                    </li>
+                                                                    <li><a href="#"onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;">
+                                                                        <img src="{% static 'images/social/fb.png' %}" alt="fb">
+                                                                    </a></li>
+                                        
+                                                                    <li><a href="#"onClick="MyWindow=window.open('http://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;">    
+                                                                        <img src="{% static 'images/social/linkden.png' %}" alt="linkden">
+                                                                       
+                                                                    </a></li>
+                                                                    <li><a href="#"onClick="MyWindow=window.open('https://twitter.com/share?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;">
+                                                                        <img src="{% static 'images/social/twitter.png' %}" alt="twitter">
+                                                                        
+                                                                    </a></li>
+                                                                </ul>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blog-content-one blog-content-two sp-three">
+                                        <div class="top-content centred">
+                                            <div class="meta-text"><a href="{% url 'posts_hindi' up_slider.id %}">{{ up_slider.category | truncatewords:20 }}</a></div>
+                                            <div class="title"><h4><a href="{% url 'posts_hindi' up_slider.id %}">{{ up_slider.title }}</a></h4></div>
+                                            <div class="date"><span>On</span> {{ up_slider.creation_date }} &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By </span> {{ up_slider.expert }}</div>
+                                        </div>
+                                        <div class="text">
+                                            <p>{% autoescape off %}{{up_slider.content | truncatewords:35 }}{% endautoescape off %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}  
+                        </div>	 		
+                        <div class="load-more-blg text-center mb-20">
+                            <a href="#" class="btn-com">Load More</a>
+                        </div> 
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </section>
+
+    {% endblock %}

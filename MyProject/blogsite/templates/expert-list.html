@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="list-experts">
+    <div class="container">
+        <h2>List of experts</h2>
+        <div class="search-bar-expert">
+            <form action="">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="">Searching in...</label>
+                            <div class="fc-icn">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                <input type="text" class="form-control" placeholder="Please type a location">
+                                <i class="fa fa-compass last-icn" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label for="">Searching For...</label>
+                            <div class="fc-icn">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <input type="text" class="form-control" placeholder="Please type a disorder">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="list-expert-wrapper">
+            <div class="row">
+                {% if expert_list %}
+                {% for expert_list in expert_list %}
+                <div class="col-md-6">
+                    <div class="expert-list-colmn">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="expt-img">
+                                    <img src="{{ expert_list.image.url }}" alt="expert-img" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="expert-list-descript">
+                                    <ul class="list-unstled">
+                                        <li>
+                                            <strong>Name- </strong>
+                                            <span>{{expert_list.name}}</span>
+                                        </li>
+                                        <li>
+                                            <strong>Education- </strong>
+                                            <span>{{expert_list.education}}</span>
+                                        </li>
+                                        <li>
+                                            <strong>Area of expertise- </strong>
+                                            <span>{{expert_list.expertise}}</span>
+                                        </li>
+                                        <li>
+                                            <strong>Work Experience- </strong>
+                                            <span>{{expert_list.experience}} years </span>
+                                        </li>
+                                        <li>
+                                            <strong>Contact Information- </strong>
+                                            <span>{% autoescape off %}{{expert_list.contact_info}} {% endautoescape off %}</span>
+                                        </li>
+                                    </ul>
+                                    <div class="see-more text-right">
+                                        <a href="{% url 'expert' expert_list.id %}">See More...</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                    <p>data not available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

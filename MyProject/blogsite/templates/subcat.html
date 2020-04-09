@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="category-wrapper" style="padding-top: 30px;">
+    <div class="container">
+        {% for subcat in subcate %} 
+        <div class="row ">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="content-box overlay-item">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><img src="{{ subcat.image.url }}" alt=""></figure>
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="{% url 'posts_detail' subcat.id %}"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-content-one blog-content-two sp-three">
+                        <div class="top-content centred">
+                            <div class="title"><h4><a href="{% url 'posts_detail' subcat.id %}">{{subcat.category }}</a></h4></div>
+                            <div class="date"><span>On</span> {{ subcat.creation_date }} &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By </span> {{ subcat.author }}</div>
+                        </div>
+                        <div class="text">
+                            <p>{% autoescape off %}{{ subcat.content | truncatewords:25 }}{% endautoescape off %}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}       
+        </div>  
+    </div> 
+</section>
+{% endblock%}

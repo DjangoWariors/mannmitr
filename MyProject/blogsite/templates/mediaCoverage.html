@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="slider-content centred slider-tp-wrapper" >
+    <div class="container">
+      <div class="row">
+        {% for query in queryset %}
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="{{query.image.url}}" style="width:100%">
+            <div class="caption">
+                <div class="text-left"> 
+                    <h4><b>Date of coverage: </b>{{''}}{{query.Date}}</h4>
+                </div>
+                <div class="text-left"> 
+                    <h4><b>Publication: </b>{{''}}{{query.publication}}</h4>
+                </div>
+                <div class="text-left"> 
+                    <h4><b>Synopsis: </b></h4>
+                </div>
+                <p class="text-justify"> 
+                  {% autoescape off %} {{query.synopsis | truncatewords:35}} {% endautoescape off %}
+                </p>
+            </div>
+          </div>  
+        </div>
+        {% endfor %}
+      </div>
+      <div class="load-more">
+        {% if queryset.has_next %}
+        <a  href="?page={{ queryset.next_page_number }}" class="btn">Load Next</a>
+        {% elif queryset.has_previous %}
+        <a href="?page={{ queryset.previous_page_number }}" class="btn">previous</a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
