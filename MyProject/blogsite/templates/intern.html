@@ -1,61 +1,49 @@
 
-{% extends "base.html" %}
+{% extends "base.html" %}<h3>Please tell us why you <br> want to intern with us </h3>
 {% block content %}
-   <!-- contact section -->
-   <section class="contact-section sp-eight">
-    <div class="container" style="border:1px solid #ccc;border-radius: 15px;padding-top: 4rem;padding-bottom: 4rem;padding-left: 4rem;">
+   
+<section class="contact-page-temp">
+    <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-12 col-xs-12 content-side">
-                    <div class="contact-info">
-                        <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>
-                        
-                        <h3>Please tell us why you <br> want to intern with us </h3>
-                    </div>
+            <div class="col-md-4">
+                <div class="contact-left-bar text-center">
+                    <h2 class="text-uppercase">Contact</h2>
+                    <p>Please tell us why you <br> want to intern with us </p>
+                </div>
             </div>
-            <div class="col-md-8 col-sm-12 col-xs-12 content-side">
-                <div class="blog-details-content">
-                            <div class="contact-form-area">
-                                <form method="post" action="" id="contact-form" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    {{form.non_field_errors}}
-                                    <div class="row">
-                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                            <label for="male">Name</label>
-                                            {{form.Name}}
-                                        </div>
-                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                            <label for="male">Phone</label>
-                                            {{form.phone}}
-                                        </div>
-                                    
-                                        <div class="form-group col-md-6 col-sm-12 col-xs-12">
-                                            <label for="male">Email</label>
-                                            {{form.email}}
-                                        </div>
-                                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                            <label for="male">Message</label>
-                                            {{form.message}}
-                                        </div>
-                                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                            <label for="male">CV Not mandatory</label>
-                                            {{form.CV}}
-                                        </div>
-                                        
-                                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                            <button class="btn-one" type="submit" onclick="myFunction()" name="submit-form">Send Message</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <script>
-                                    var form = document.getElementById('contact-form');
-                                    function myFunction() {
-                                    if (form.checkValidity()) {
-                                        alert("Record inserted successfully");
-                                    }
-                                    }
-                                </script>
-
+            <div class="col-md-8">
+                <div class="contct-details-frm">
+                    <form method="post" action="" onSubmit="return confirm('Do you want to submit your Email ?') ">
+                        {% csrf_token %}
+                        {{form.non_field_errors}}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{form.Name}}
+                                </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{form.phone}}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{form.email}}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{form.message}}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button class="btn-comm" type="submit" name="submit-form">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

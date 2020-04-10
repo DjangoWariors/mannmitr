@@ -12,7 +12,7 @@
                     <div class="img-box"><a href="{% url 'posts_detail' Slider_Disorder.id %}"><figure><img src="{{ Slider_Disorder.image.url }}" alt=""></figure></a></div>
                     <div class="lower-content">
                         <div class="meta-text"><a href="{% url 'posts_detail' Slider_Disorder.id %}">{{ Slider_Disorder.category }}</a></div>
-                        
+                        <div class="title"><h4><a href="{% url 'posts_detail' Slider_Disorder.id %}">{{ Slider_Disorder.title }}</a></h4></div>
                         <div class="title"><h6><a href="{% url 'posts_detail' Slider_Disorder.id %}">{% autoescape off %}{{ Slider_Disorder.content | truncatewords:15 }}{% endautoescape %}</a></h6></div>
                     </div> 
                 </div>
@@ -189,6 +189,7 @@
                         <div class="img-box"><a href="{% url 'posts_detail' up_slider.id %}"><figure><img src="{{ up_slider.image.url }}" alt=""></figure></a></div>
                         <div class="lower-content">
                             <div class="meta-text"><a href="{% url 'posts_detail' up_slider.id %}">{{ up_slider.category }}</a></div>
+                            <div class="title"><h4><a href="{% url 'posts_detail' up_slider.id %}">{{ up_slider.title }}</a></h4></div>
                             <div class="title"><h6><a href="{% url 'posts_detail' up_slider.id %}">{% autoescape off %}{{ up_slider.content | truncatewords:15 }}{% endautoescape off %}</a></h6></div>
                         </div>
                     </div>

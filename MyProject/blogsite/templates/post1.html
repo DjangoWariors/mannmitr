@@ -24,6 +24,11 @@
                             <div class="share-scl-media">
                                 <ul class="social-style-one" >
                                     <li class="share-head "><i class="fa fa-share-alt" aria-hidden="true" ></i> <strong class="text-uppercase">SHARE</strong></li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="{% static 'images/social/insta.png' %}" alt="insta">
+                                        </a>
+                                    </li>
                                     <li><a href="#"onClick="MyWindow=window.open('https://wa.me/?text={{ request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/whatapp.png'  %}" alt="whatapp"></a></li>
                                     <li><a href="#"onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/fb.png' %}" alt="fb"></a></li>
                                     <li><a href="#" onClick="MyWindow=window.open('https://www.linkedin.com/sharing/share-offsite/?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/linkden.png' %}" alt="linkden"></a></li>
@@ -43,6 +48,11 @@
                         <div class="social-media-cl-share">
                             <ul class="social-style-one">
                                 <li class="share-head "><i class="fa fa-share-alt" aria-hidden="true" ></i> <strong class="text-uppercase">SHARE</strong></li>
+                                <li>
+                                    <a href="#">
+                                        <img src="{% static 'images/social/insta.png' %}" alt="insta">
+                                    </a>
+                                </li>
                                 <li><a href="#"onClick="MyWindow=window.open('https://wa.me/?text={{ request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/whatapp.png'  %}" alt="whatapp"></a></li>
                                 <li><a href="#"onClick="MyWindow=window.open('https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri|urlencode }}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/fb.png' %}" alt="fb"></a></li>
                                 <li><a href="#" onClick="MyWindow=window.open('https://www.linkedin.com/sharing/share-offsite/?url={{request.build_absolute_uri|urlencode}}','MyWindow','width=550,height=650');return false;"><img src="{% static 'images/social/linkden.png' %}" alt="linkden"></a></li>
@@ -129,6 +139,12 @@
                                 </div>
                             </form>
                         </div>    
+                    </div>
+                    <div class="send-suggestion text-center">
+                        <div class="send-suggestions-desc">
+                            <p>Send us suggestions for content topics and themes you would like us to cover.</p>
+                        </div>
+                        <p><a href="javascript:void(0)" class="btn-com">Click here</a></p>
                     </div>
                 </div>
             </div>

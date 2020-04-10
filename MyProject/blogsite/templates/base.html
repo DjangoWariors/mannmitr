@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i|Open+Sans:300,400,600,600i,700,700i,800&display=swap" rel="stylesheet">
 </head>
 
@@ -31,7 +32,7 @@
         <section class="top-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xs-6 tp-head-lft">
                         <div class="top-header-left">
                             <ul class="list-unstyled">
                                 <li><a href="{% url 'about' %}">About us</a></li>
@@ -41,14 +42,22 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-xs-12 tp-head-logo">
                         <div class="logo-wrap text-center">
                             <a href="{% url 'index' %}">
                                 <img src="{% static 'images/logo/logo-mannmitr.png'  %}"alt="mannmitr" >
                             </a>
                         </div>
+                        <div class="navbar-header">     
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xs-6 tp-head-last">
                         <div class="top-header-right">
                             <ul class="list-inline">
                                 <li class="cart"><a href="{% url 'index2' %}">Hindi</a> </li>
@@ -83,14 +92,6 @@
                     <div class="col-md-12 col-sm-12 col-xs-12 menu-column">
                         <div class="menu-area">
                             <nav class="main-menu ">
-                                <div class="navbar-header">     
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
                                         <li><a href="{% url 'index'  %}"><i class="fa fa-home"></i>  </a></li>   
@@ -202,20 +203,11 @@
         <!-- footer bottom -->
     </footer>
     <!-- main footer end -->
-
-    
-
-
-
 <!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target=".main-header"><span class="icon fa fa-angle-up"></span></div>
-
-
-
 <!--jquery js -->
 <script type="text/javascript" id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vfl2vZZmd/www-widgetapi.js" async=""></script>
 <script src="https://www.youtube.com/iframe_api"></script>
-
 <script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
@@ -223,10 +215,7 @@
 <script src="{% static 'js/validation.js' %}"></script>
 <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
 <script type="text/javascript" src= "{% static 'js/SmoothScroll.js' %}"></script>
-
 <script src="{% static 'js/html5lightbox/html5lightbox.js' %}"></script>  
 <script src="{% static 'js/script.js' %}"></script>
-
-
 </body><!-- End of .page_wrapper -->
 </html>

@@ -197,10 +197,18 @@
 
 }
 @media only screen and (max-width: 767px){
-	.footer-style-one{padding: 15px 0px 15px 0px;}
+	.foot-nav-cl, .footer-wideget .categories-list{text-align: center;}
+	.footer-categories-wideget .categories-list li{display: inline-block;}
+	.footer-style-one{padding: 15px 0px 0px 0px;}
 	.sidebar-cnt-wrap{padding: 17px 0px 17px 0px;}
 	.main-footer .logo-wideget{
 		margin-bottom: 30px;
+	}
+	.list-expert-wrapper > div > div{
+		width: 100%;
+	}
+	.expert-list-descript {
+		padding-left: 5%;
 	}
 	.main-footer .footer-post-wideget{
 		margin-bottom: 45px;
@@ -320,7 +328,53 @@
 	.top-shop-content{
 		text-align: center;
 	}
-	
+	.top-header > div > .row{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.logo-wrap{margin: 0;max-width: 36%;}
+	.tp-head-lft{order: 1;}
+	.tp-head-logo{
+		order: 3;
+		border-top: 1px dashed rgba(0, 0, 0, 0.06);
+		margin-top: 5px;
+		padding-top: 5px;
+	}
+	.top-header{
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.09);
+		padding: 1px 0px 6px;
+	}
+	.mobile-menu, .mobile-menu > li > ul, .mobile-menu > li > ul > li > ul{
+		background: #8B62A9;
+	}
+	.main-header li.dropdown a:after{opacity: 0;}
+	.tp-head-last{order: 2;}	
+	.top-header .navbar-toggle{
+		position: absolute;
+		right: 15px;
+		background: #8B62A9;
+		top: calc(50% - 20px);
+		margin: 0;
+	}
+	.slider-tp-wrapper .owl-nav .owl-prev{left: -30px;}
+	.slider-tp-wrapper .owl-nav .owl-next{right: -30px;}
+	.navbar-toggle .icon-bar{
+		background: #fff;
+	}
+	.contct-details-frm > form > .row > div:last-child{
+		text-align: center;
+	}
+	.contact-left-bar h2{
+		margin-bottom: 2px;
+		line-height: normal;
+	}
+	.contact-page-temp > div > .row > div{width: 100%;}
+	.top-header .navbar-toggle{
+
+	}
+	.contact-page-temp {
+		padding: 40px 0px;
+	}
 }
 
 @media only screen and (max-width: 599px){
@@ -385,14 +439,17 @@
 }
 
 @media only screen and (max-width: 499px) {
-	
+	.expert-list-colmn > .row{display: block;}
 	.header-top .right-info{
 		float: none;
 		text-align: center;
 	}
+	.search-bar-expert .form-group{margin-bottom: 15px;}
+	.expt-img, .expert-img{margin: 0px auto 15px;}
 	.main-header .search-box-area .search-box.now-visible,
 	.main-header .search-box-area .search-box{
-		right: -128px;
+		right: 0;
+		top: 30px;
 	}
 	.header-style-five .search-box-area .search-box.now-visible,
 	.header-style-five .search-box-area .search-box{

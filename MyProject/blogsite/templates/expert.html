@@ -7,12 +7,12 @@
                 <div class="expert-details-left">
                     <div class="expert-details-wrapper">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="expert-img">
                                     <img src="{{ expert.image.url }}" alt="expert-img" class="img-responsive">
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="expert-content">
                                     <ul class="list-unstyled">
                                         <li><strong>Name-</strong> {{expert.name}}</li>
@@ -46,9 +46,9 @@
                         </ul>
                         <div class="load-more">
                             {% if post_exp.has_next %}
-                            <a  href="?page={{ post_exp.next_page_number }}" class="btn">Load Next</a>
+                            <a  href="?page={{ post_exp.next_page_number }}" class="btn-com">Load Next</a>
                             {% elif post_exp.has_previous %}
-                            <a href="?page={{ post_exp.previous_page_number }}" class="btn">previous</a>
+                            <a href="?page={{ post_exp.previous_page_number }}" class="btn-com">previous</a>
                             {% endif %}
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         {% endfor %}
                     </div>
                     <div class="other-expert-wrap">
-                        <h3>Other experts </h3>
+                        <h3>Other experts like {{expert.name}}</h3>
                         <ul>
                             {% for expert_all in expert_all %}
                            <li><a href="{% url 'expert' expert_all.id %}">{{expert_all.name}}</a></li> 
@@ -132,7 +132,7 @@
 </section>
 -->
 
-<section class="slider-content centred slider-tp-wrapper">
+<section class="slider-content centred slider-tp-wrapper expert-detsil-page">
     <div class="container"> 
         <h2>Related Post</h2>
         <div class="four-column-carousel owl-dots-none owl-nav">

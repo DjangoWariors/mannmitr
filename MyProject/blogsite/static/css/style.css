@@ -782,10 +782,10 @@ body .userway.userway_p1{
   position: absolute;
   right: 0px;
   top: 38px;
-  background: #ffffff;
+  /* background: #ffffff;
   border-top: 2px solid  #967BB6;
   padding: 15px;
-  box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.50);
+  box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.50); */
   visibility: hidden;
 }
 .main-header .search-box-area .form-group{
@@ -1112,7 +1112,7 @@ body .userway.userway_p1{
   max-height: 300px;
   margin-bottom: 20px;
 }
-.sidebar-newsletter {
+.sidebar-newsletter, .send-suggestion{
   background: #faf9f9;
   padding: 15px;
 }
@@ -1137,7 +1137,7 @@ body .userway.userway_p1{
   background: #fff;
   padding: 15px;
 }
-.recent-post-list-wrap .single-post{
+.recent-post-list-wrap .single-post, .contact-page-temp > div > .row{
   display: flex;
   flex-wrap: wrap;
   line-height: normal;
@@ -1645,6 +1645,9 @@ textarea{
   border: 1px solid #f1f1f1;
   padding: 8px 20px;
   transition: all 900ms ease;
+}
+textarea{
+  height: 100px;
 }
 input:focus,
 textarea:focus{
@@ -3954,7 +3957,7 @@ td.qty {
 
 /* Expert Page style */
 .expert-details{
-  padding: 25px 0px;
+  padding: 25px 0px 4px;
 }
 .expert-img {
   width: 245px;
@@ -3985,7 +3988,7 @@ td.qty {
 .exprt-workshop {
   background: #f2f2f2;
   padding: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 .exprt-workshop > h4 {
   font-size: 17px;
@@ -4006,10 +4009,11 @@ td.qty {
   color: #333;
   margin-bottom: 3px;
   font-size: 13px;
+  font-weight: 600;
 }
 .workshp-plce p, .workshp-plce span{
   color: #9d9d9d;
-  font-size: 14px;
+  font-size: 13px;
   line-height: normal;
 }
 .workshp-plce {
@@ -4020,7 +4024,8 @@ td.qty {
 }
 .expert-details-wrapper {
   border-bottom: 1px solid #eee;
-  margin-bottom: 15px;
+  margin-bottom: 19px;
+  padding-bottom: 15px;
 }
 .expert-content > h2 {
   font-size: 20px;
@@ -4038,17 +4043,19 @@ td.qty {
 }
 .other-expert-wrap li:before{
   content: '\f105 ';
-  color: #d97610;
+  color: #967BB6;
   left: 0px;
   font-family: 'FontAwesome';
   position: absolute;
+  top: 2px;
 }
+.other-expert-wrap li a{color: #333;text-transform: capitalize;}
 .other-expert-wrap {
   background: #f2f2f2;
   padding: 12px;
 }
 .expert-video-wrap {
-  margin-bottom: 5px;
+  margin-bottom: 30px;
 }
 .articals-written-wrap h2 {
   font-size: 21px;
@@ -4056,8 +4063,12 @@ td.qty {
   font-weight: 600;
   margin-bottom: 21px;
 }
+.articals-written-wrap .artcl-img{
+  width: 100%;
+  max-width: 100px;
+}
 .artcl-img img {
-  max-width: 133px;
+  max-width: 100px;
 }
 .articals-written-wrap .artcle-right {
   padding-left: 21px;
@@ -4069,10 +4080,10 @@ td.qty {
   align-items: center;
 }
 .artcle-right > h3 {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
   line-height: normal;
-  margin-bottom: 2px;
+  margin-bottom: 0px;
 }
 .artcle-right > span {
   color: #999999;
@@ -4086,7 +4097,7 @@ td.qty {
   padding: 9px 32px;
   line-height: normal;
 }
-.workshp-plce p{margin-bottom: 3px;}
+.workshp-plce p{margin-bottom:0px;}
 .related-post{padding: 25px 0px;}
 .reltd-post-colmn{    box-shadow: 0 0 3px rgba(0, 0, 0, 0.09); margin-bottom: 10px;}
 .reld-img img{
@@ -4136,7 +4147,6 @@ td.qty {
   width: 142px;
   height: 142px;
   overflow: hidden;
-  margin: 0 auto;
   border-radius: 50%;
 }
 .abt-img {
@@ -4164,12 +4174,25 @@ td.qty {
 .expert-list-colmn {
   background: #f2f2f2;
   padding: 10px;
-  margin-bottom: 15px;
+  height: 100%;
+}
+.list-expert-wrapper > div > div{
+  margin-bottom: 30px;
+}
+.list-expert-wrapper .row{
+  display: flex;
+  flex-wrap: wrap;
+}
+.expert-list-colmn > .row{
+  margin: 0px;
+}
+.expert-list-colmn > .row > div{
+  padding: 0px;
 }
 .see-more a {
-  font-size: 12px;
-  color: #967BB6;
-  font-weight: 600;
+  font-size: 13px;
+  color: #000;
+  font-weight: 700;
 }
 .fc-icn{
   position: relative;
@@ -4328,5 +4351,47 @@ td.qty {
   font-size: 27px;
   margin-bottom: 15px;
   font-weight: 600;
+}
+.send-suggestion{
+  margin-top: 15px;
+  background: #f2f2f2;
+}
+.send-suggestions-desc p{
+  color: #000;
+  font-size: 17px;
+  line-height: normal;
+}
+.see-more {
+  line-height: normal;
+}
+.expert-detsil-page{
+  padding: 7px 0px;
+}
+.contact-page-temp{
+  padding:70px 0px;
+}
+.contact-page-temp > div > .row{
+  align-items: center;
+}
+.contct-details-frm .form-group{
+  margin-bottom: 15px;
+}
+.contact-left-bar h2{font-weight: 700;}
+.btn-comm{
+  border: 2px solid #967BB6;
+  color: #967BB6;
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  transition: all 900ms ease;
+  padding: 12px 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 13px;
+}
+.btn-comm:hover{
+  color: #fff;
+  background: #967BB6;
 }
 /* Expert Page style */
